@@ -19,7 +19,7 @@ import java.util.UUID;
 @Component
 @Qualifier
 @Profile("!test")
-public class Initiliazier implements CommandLineRunner {
+public class Initializer implements CommandLineRunner {
 
     @Autowired
     ContestRepository repository;
@@ -40,7 +40,10 @@ public class Initiliazier implements CommandLineRunner {
 
         Mono<Contest> mono = repository.save(contest);
 
-        mono.map(Contest::getId).flatMapMany(a -> Flux.interval(Duration.ofMillis(5)).take(10).flatMap(b -> rankRepository.add(a, UUID.randomUUID().toString(), 10 + b).log())).subscribe();
+        mono.map(Contest::getId).flatMapMany(a -> Flux.interval(Duration.ofMillis(5))
+                                                      .take(10)
+                                                      .flatMap(b -> rankRepository.add(a, UUID.randomUUID().toString(), 10 + b))
+        ).subscribe();
 
     }
 

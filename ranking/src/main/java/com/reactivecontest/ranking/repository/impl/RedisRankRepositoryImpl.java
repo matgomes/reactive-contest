@@ -9,7 +9,6 @@ import org.springframework.stereotype.Repository;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-import static org.springframework.data.domain.Range.Bound.exclusive;
 import static org.springframework.data.domain.Range.Bound.inclusive;
 
 @AllArgsConstructor
@@ -24,12 +23,17 @@ public class RedisRankRepositoryImpl implements RedisRankRepository {
     }
 
     @Override
-    public Flux<TypedTuple<String>> revRangeWithScores(String key, Long rangeFrom, Long rangeTo) {
-        return zSetOps.reverseRangeWithScores(key, Range.from(inclusive(rangeFrom)).to(exclusive(rangeTo)));
+    public Flux<TypedTuple<String>> reverseRangeWithScores(String key, Long rangeFrom, Long rangeTo) {
+        return zSetOps.reverseRangeWithScores(key, Range.from(inclusive(rangeFrom)).to(inclusive(rangeTo)));
     }
 
     @Override
-    public Mono<Long> revRank(String key, String userId) {
-        return zSetOps.reverseRank(key, userId);
+    public Mono<Long> reverseRank(String key, String member) {
+        return zSetOps.reverseRank(key, member);
+    }
+
+    @Override
+    public Mono<Double> score(String key, String member) {
+        return zSetOps.score(key, member);
     }
 }

@@ -9,4 +9,5 @@ public class ScoreResponse {
 
     private String userId;
     private Double score;
+    private Long position;
 }

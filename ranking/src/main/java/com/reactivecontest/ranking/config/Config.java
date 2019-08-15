@@ -16,17 +16,7 @@ public class Config {
     @Bean
     public Mapper mapper(){
         return DozerBeanMapperBuilder.buildDefault();
-
     }
-
-//    @Bean
-//    public ReactiveRedisTemplate<String, ScoreRequest> reactiveRedisTemplate(ReactiveRedisConnectionFactory factory) {
-//        Jackson2JsonRedisSerializer<ScoreRequest> serializer = new Jackson2JsonRedisSerializer<>(ScoreRequest.class);
-//        RedisSerializationContext.RedisSerializationContextBuilder<String, ScoreRequest> builder = RedisSerializationContext.newSerializationContext(new StringRedisSerializer());
-//        RedisSerializationContext<String, ScoreRequest> context = builder.value(serializer)
-//                .build();
-//        return new ReactiveRedisTemplate<>(factory, context);
-//    }
 
     @Bean
     public ReactiveRedisTemplate<String, String> reactiveRedisTemplateString(ReactiveRedisConnectionFactory connectionFactory) {
