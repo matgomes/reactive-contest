@@ -2,7 +2,6 @@ package com.reactivecontest.ranking.repository.impl;
 
 import com.reactivecontest.ranking.repository.RedisRankRepository;
 import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import org.springframework.data.domain.Range;
 import org.springframework.data.redis.core.ReactiveZSetOperations;
 import org.springframework.data.redis.core.ZSetOperations.TypedTuple;
@@ -12,7 +11,6 @@ import reactor.core.publisher.Mono;
 
 import static org.springframework.data.domain.Range.Bound.inclusive;
 
-@NoArgsConstructor
 @AllArgsConstructor
 @Repository
 public class RedisRankRepositoryImpl implements RedisRankRepository {

@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+
+  db:
+    image: mongo
+
+  redis:
+    image: redis
+    ports:
+      - 6379:6379
+
+  contest:
+    build:
+      context: .
+      args:
+        JAR_FILE: "build/libs/ranking-0.0.1-SNAPSHOT.jar"
+    image: contest
+    ports:
+      - 8080:8080
+    depends_on:
+      - db
+      - redis

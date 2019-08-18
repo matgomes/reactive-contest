@@ -6,9 +6,11 @@ spring:
   profiles: dev
   data:
     mongodb:
-      host: localhost
+      host: db
       port: 27017
       database: contest
+  redis:
+    host: redis
 ---
 spring:
   profiles: test
