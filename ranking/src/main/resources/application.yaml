@@ -11,10 +11,4 @@ spring:
       database: contest
 ---
 spring:
-  profiles: nonprod
----
-spring:
-  profiles: prod
----
-spring:
   profiles: test

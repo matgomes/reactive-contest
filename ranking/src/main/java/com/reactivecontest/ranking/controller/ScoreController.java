@@ -2,6 +2,7 @@ package com.reactivecontest.ranking.controller;
 
 import com.reactivecontest.ranking.dto.ScoreRequest;
 import com.reactivecontest.ranking.dto.ScoreResponse;
+import com.reactivecontest.ranking.exception.NotFoundException;
 import com.reactivecontest.ranking.service.ScoreService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -30,7 +31,8 @@ public class ScoreController {
                                                                                           .score(typedTuple.getScore())
                                                                                           .userId(typedTuple.getValue())
                                                                                           .position(index)
-                                                                                      .build());
+                                                                                      .build())
+                      .switchIfEmpty(Flux.error(NotFoundException::new));
     }
 
     @GetMapping(value = "/score/{contestId}/{userId}", produces = {MediaType.APPLICATION_JSON_VALUE})
@@ -39,7 +41,8 @@ public class ScoreController {
                                                                                        .score(tuple.getT1())
                                                                                        .userId(userId)
                                                                                        .position(tuple.getT2())
-                                                                                   .build());
+                                                                                   .build())
+                      .switchIfEmpty(Mono.error(NotFoundException::new));
     }
 
 }

@@ -25,9 +25,9 @@ public class ContestService {
         return repository.findById(id);
     }
 
-    public Mono<Contest> save(Contest constest){
-        log.info("Saving contest [{}]", constest);
-        return repository.save(constest);
+    public Mono<Contest> save(Contest contest){
+        log.info("Saving contest [{}]", contest);
+        return repository.save(contest);
     }
 
 }

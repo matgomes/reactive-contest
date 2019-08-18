@@ -3,7 +3,7 @@ package com.reactivecontest.ranking.dto;
 import lombok.Data;
 
 import javax.validation.constraints.NotEmpty;
-import java.util.UUID;
+import javax.validation.constraints.NotNull;
 
 @Data
 public class ScoreRequest {
@@ -12,8 +12,8 @@ public class ScoreRequest {
     private String contestId;
 
     @NotEmpty
-    private UUID userId;
+    private String userId;
 
-    @NotEmpty
+    @NotNull
     private Long score;
 }
