@@ -1,4 +1,4 @@
-# reactive-ranking
+# reactive-contest
 Reactive ranking application using Java with Spring Webflux, Redis and Mongodb
 
 ## RUNNING
